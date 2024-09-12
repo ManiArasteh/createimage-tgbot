@@ -21,8 +21,6 @@ jobs:
       run: wget https://github.com/ManiArasteh/createimage-tgbot/raw/main/texttoimage.py
     - name: Download requirements
       run: wget https://github.com/ManiArasteh/createimage-tgbot/raw/main/requirements.txt
-    - name: Download Pip
-      run: apt install python3-pip
     - name: Build Dockerfile
       run: docker build . --file Dockerfile --tag createimage-tgbot
     - name: Run Docker image
