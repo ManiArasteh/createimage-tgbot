@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Setup Python
-      run: apt install python3
     - uses: actions/checkout@v4
     - name: Download Dockerfile
       run: wget https://github.com/ManiArasteh/createimage-tgbot/raw/main/Dockerfile
