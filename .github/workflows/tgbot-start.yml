@@ -1,0 +1,31 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup Python
+      run: apt install python3
+    - uses: actions/checkout@v4
+    - name: Download Dockerfile
+      run: wget https://github.com/ManiArasteh/createimage-tgbot/raw/main/Dockerfile
+    - name: Download Python file
+      run: wget https://github.com/ManiArasteh/createimage-tgbot/raw/main/texttoimage.py
+    - name: Download requirements
+      run: wget https://github.com/ManiArasteh/createimage-tgbot/raw/main/requirements.txt
+    - name: Download Pip
+      run: apt install python3-pip
+    - name: Build Dockerfile
+      run: docker build . --file Dockerfile --tag createimage-tgbot
+    - name: Run Docker image
+      run: docker run --rm -d createimage-tgbot
